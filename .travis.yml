@@ -11,5 +11,5 @@ deploy:
       on:
           branch: master
 addons:
-  ssh_known_hosts:
-  - breathe.network
+    ssh_known_hosts:
+        - "breathe.network:50265"
