@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
@@ -43,9 +44,17 @@ const instance = ({name, target}) => ({
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "../css/style.css",
-            chunkFilename: "../css/[id].css"
-        })
+            filename: '../css/style.css',
+            chunkFilename: '../css/[id].css',
+        }),
+        new CopyWebpackPlugin([
+            {
+                context: 'public',
+                from: '**/*',
+                to: path.resolve(__dirname, 'dist', 'static'),
+                toType: 'dir'
+            }
+        ])
     ]
 });
 

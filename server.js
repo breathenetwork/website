@@ -10,10 +10,21 @@ const server = express();
 
 server.use('/static', express.static(path.join('dist', 'static')));
 server.get('*', (req, res) => {
+    const title = 'Breathe!';
+    const desc = 'Want to breathe?';
+    const host = req.headers.host;
+    const proto = req.protocol;
+    const baseurl = proto + '://' + host;
     renderToNodeStream(
         <html>
         <head>
-            <title>Breathe!</title>
+            <title>{title}</title>
+            <meta charSet="utf-8"/>
+            <meta name="description" content={desc}/>
+            <meta name="og:title" content={title}/>
+            <meta name="og:description" content={desc}/>
+            <meta name="og:url" content={baseurl}/>
+            <meta name="og:image" content='/static/img/lain.jpg'/>
             <link rel="stylesheet" href="/static/css/style.css"/>
         </head>
         <body>
