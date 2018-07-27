@@ -4,7 +4,6 @@ const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
 const instance = ({name, target}) => ({
-    ...(target === 'node' ? {externals: nodeExternals()} : {}),
     entry: {
         [name]: `./${name}.js`,
     },
