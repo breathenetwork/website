@@ -20,11 +20,11 @@ server.get('*', (req, res) => {
         <head>
             <title>{title}</title>
             <meta charSet="utf-8"/>
-            <meta name="description" content={desc}/>
-            <meta name="og:title" content={title}/>
-            <meta name="og:description" content={desc}/>
-            <meta name="og:url" content={baseurl}/>
-            <meta name="og:image" content='/static/img/lain.jpg'/>
+            <meta property="og:title" content={title}/>
+            <meta property="og:type" content='website' />
+            <meta property="og:image" content='/static/img/lain.jpg'/>
+            <meta property="og:url" content={baseurl}/>
+            <meta property="og:description" content={desc}/>
             <link rel="stylesheet" href="/static/css/style.css"/>
         </head>
         <body>
