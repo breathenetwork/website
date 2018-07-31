@@ -12,8 +12,8 @@ server.use('/static', express.static(path.join('dist', 'static')));
 server.get('*', (req, res) => {
     const title = 'Breathe!';
     const desc = 'Want to breathe?';
-    const host = req.headers.host;
-    const proto = req.protocol;
+    const host = req.headers['X-Forwarded-Host'] || req.headers.host;
+    const proto = req.headers['X-Forwarded-Proto'] || req.protocol;
     const baseurl = proto + '://' + host;
     renderToNodeStream(
         <html>
